@@ -83,7 +83,7 @@ pub trait AudioStreamBase {
     /**
      * Get the stream's session ID allocation strategy (None or Allocate)
      */
-    fn get_session_id(&self) -> SessionId;
+    fn get_session_id(&self) -> i32;
 
     /**
      * Return true if can convert channel counts to achieve optimal results.
@@ -154,8 +154,8 @@ impl<T: RawAudioStreamBase> AudioStreamBase for T {
         FromPrimitive::from_i32(self._raw_base().mInputPreset).unwrap()
     }
 
-    fn get_session_id(&self) -> SessionId {
-        FromPrimitive::from_i32(self._raw_base().mSessionId).unwrap()
+    fn get_session_id(&self) -> i32 {
+        self._raw_base().mSessionId
     }
 
     fn is_channel_conversion_allowed(&self) -> bool {

@@ -386,8 +386,8 @@ impl<D, C, T> AudioStreamBuilder<D, C, T> {
      *
      * Added in API level 28.
      */
-    pub fn set_session_id(mut self, session_id: SessionId) -> Self {
-        self._raw_base_mut().mSessionId = session_id as i32;
+    pub fn set_session_id(mut self, session_id: i32) -> Self {
+        self._raw_base_mut().mSessionId = session_id;
         self
     }
 
